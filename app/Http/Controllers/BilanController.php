@@ -19,11 +19,11 @@ class BilanController extends Controller
                     JOIN
                 evaluationfroids e ON f.id_formation = e.id_formation
                     JOIN
-                public.evaluationfroid_appreciations ea ON e.id = ea.id_evaluationfroid
+                evaluationfroid_appreciations ea ON e.id = ea.id_evaluationfroid
             GROUP BY
                 f.id_formation, f.theme_formation
             ORDER BY
-                f.id_formation;
+                f.id_formation
             ");
         return view("bilan", compact('bilan'));
     }
@@ -31,11 +31,11 @@ class BilanController extends Controller
     public function bilanchaud()
     {
         $bilan = DB::select("select f.id_formation, f.theme_formation, sum(ea.note) as sum_note, count(ea.note) as count_note
-from formations f
-    join public.evaluationschauds e on f.id_formation = e.id_formation
-    join public.evaluationchaud_appreciations ea on e.id = ea.id_evaluationchaud
-group by f.id_formation, f.theme_formation
-order by f.id_formation");
+                    from formations f
+                        join evaluationschauds e on f.id_formation = e.id_formation
+                        join evaluationchaud_appreciations ea on e.id = ea.id_evaluationchaud
+                    group by f.id_formation, f.theme_formation
+                    order by f.id_formation");
         return view("bilan_chaud", compact('bilan'));
     }
 }
