@@ -30,6 +30,7 @@
                                                 <thead class="table-light">
                                                 <tr>
                                                     <th class="sort" data-sort="date">Theme formation</th>
+                                                    <th class="sort" data-sort="date">Participant</th>
                                                     <th class="sort" data-sort="action">Niveau global</th>
                                                 </tr>
                                                 </thead>
@@ -45,6 +46,9 @@
                                                 <tr>
                                                     <td class="date">
                                                         {{ $item->theme_formation }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->name }}
                                                     </td>
                                                     <td>
                                                         {{ $item->sum_note/($item->count_note) }} / 3
