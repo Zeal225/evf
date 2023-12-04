@@ -70,18 +70,20 @@
                         <i class="mdi mdi-notebook-multiple"></i> <span>Catégorie Appréciation</span>
                     </a>
                 </li>
-                <li class="menu-title"><span data-key="t-menu">Bilan formations</span></li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route("bilanchaud") }}">
-                        <i class="mdi mdi-notebook-minus"></i> <span>A chaud</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route("bilan") }}">
-                        <i class="mdi mdi-notebook-minus"></i> <span>A froid</span>
-                    </a>
-                </li>
-
+                <?php $role = \Illuminate\Support\Facades\Session::get("role"); ?>
+                @if($role == 'ADMIN')
+                    <li class="menu-title"><span data-key="t-menu">Bilan formations</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route("bilanchaud") }}">
+                            <i class="mdi mdi-notebook-minus"></i> <span>A chaud</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route("bilan") }}">
+                            <i class="mdi mdi-notebook-minus"></i> <span>A froid</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="menu-title"><span data-key="t-menu">Gestion des utilisateurs</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route("liste_utilisateurs") }}">
